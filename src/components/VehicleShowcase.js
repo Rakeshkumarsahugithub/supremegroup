@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from 'next/image';
 
 const passengerVideos = [
   {
@@ -153,11 +154,12 @@ export default function VehicleShowcase({ blueSectionRef }) {
       },
       { threshold: 0.01 }
     );
-    if (blueSectionRef.current) {
-      observer.observe(blueSectionRef.current);
+    const refValue = blueSectionRef.current;
+    if (refValue) {
+      observer.observe(refValue);
     }
     return () => {
-      if (blueSectionRef.current) observer.unobserve(blueSectionRef.current);
+      if (refValue) observer.unobserve(refValue);
     };
   }, [blueSectionRef]);
   // Snap scroll to section on click
@@ -382,7 +384,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
                         }, 1000);
                       }}
                     >
-                      <img src={item.icon} alt={item.name + ' icon'} className="w-16 h-16 mb-2 object-contain" />
+                      <Image src={item.icon} alt={item.name + ' icon'} className="w-16 h-16 mb-2 object-contain" width={64} height={64} />
                       <span className={`text-sm ${activeIndex === idx ? 'text-white' : 'text-white/60'}`}>{item.name}</span>
                     </button>
                   ))}
@@ -448,7 +450,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
                         }, 1000);
                       }}
                 >
-                      <img src={item.icon} alt={item.name + ' icon'} className="w-16 h-16 mb-2 object-contain" />
+                      <Image src={item.icon} alt={item.name + ' icon'} className="w-16 h-16 mb-2 object-contain" width={64} height={64} />
                       <span className={`text-sm ${activeIndex % commercialVideos.length === idx ? 'text-white' : 'text-white/60'}`}>{item.name}</span>
                 </button>
               ))}
