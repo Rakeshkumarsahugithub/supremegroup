@@ -385,8 +385,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
                   src={passengerVideos[activeIndex].video}
                   autoPlay={isPlaying}
                   muted
-                  className="max-h-56 max-w-full rounded-lg bg-black"
-                  style={{ background: '#111' }}
+                  className="max-h-56 max-w-full rounded-lg"
                   onTimeUpdate={handleTimeUpdate}
                   onEnded={handleEnded}
                   animate={{ opacity: videoLoading ? 0 : 1 }}
@@ -409,8 +408,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
                   src={commercialVideos[activeIndex % commercialVideos.length].video}
               autoPlay={isPlaying}
               muted
-              className="max-h-56 max-w-full rounded-lg bg-black"
-                  style={{ background: '#111' }}
+              className="max-h-56 max-w-full rounded-lg"
               onTimeUpdate={handleTimeUpdate}
               onEnded={handleEnded}
             />
