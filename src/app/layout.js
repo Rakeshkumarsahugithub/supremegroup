@@ -15,7 +15,7 @@ export const metadata = {
   title: "Supreme Group",
   description: "Evolving the drive with 360-degree comprehensive solutions. Soft trims and NVH solutions for seamless rides.",
   icons: {
-    icon: "/letter-s (2).png",
+    icon: "/favicon.png",
   },
 };
 
