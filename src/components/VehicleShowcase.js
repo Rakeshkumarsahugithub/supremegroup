@@ -68,6 +68,51 @@ export default function VehicleShowcase({ blueSectionRef }) {
   const mobilePassengerVideoRef = useRef();
   const mobileCommercialVideoRef = useRef();
 
+  // Add these states for touch handling (after other useState declarations)
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
+
+  // Helper for swipe detection
+  const minSwipeDistance = 50; // px
+
+  // Passenger swipe handlers
+  const onPassengerTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+  const onPassengerTouchMove = (e) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+  const onPassengerTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    if (distance > minSwipeDistance && mobilePassengerIndex < passengerVideos.length - 1) {
+      setMobilePassengerIndex(mobilePassengerIndex + 1);
+    } else if (distance < -minSwipeDistance && mobilePassengerIndex > 0) {
+      setMobilePassengerIndex(mobilePassengerIndex - 1);
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
+  // Commercial swipe handlers
+  const onCommercialTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+  const onCommercialTouchMove = (e) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+  const onCommercialTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const distance = touchStartX - touchEndX;
+    if (distance > minSwipeDistance && mobileCommercialIndex < commercialVideos.length - 1) {
+      setMobileCommercialIndex(mobileCommercialIndex + 1);
+    } else if (distance < -minSwipeDistance && mobileCommercialIndex > 0) {
+      setMobileCommercialIndex(mobileCommercialIndex - 1);
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   // Play video safely on index change (Passenger)
   useEffect(() => {
     const video = mobilePassengerVideoRef.current;
@@ -199,16 +244,24 @@ export default function VehicleShowcase({ blueSectionRef }) {
         <div className="w-full flex flex-col items-center mb-10">
           <div className="text-xl font-semibold text-[#00aaff] mb-1">Passenger vehicles</div>
           <div className="text-sm md:text-base text-center mb-4 font-normal">Revving up innovation<br/>from interior to exterior.</div>
-          <video
-            ref={mobilePassengerVideoRef}
-            key={mobilePassengerVideos[mobilePassengerIndex].video}
-            src={mobilePassengerVideos[mobilePassengerIndex].video}
-            autoPlay
-            muted
-            loop
+          <div
             className="w-full max-w-xs rounded-lg bg-black mb-2"
             style={{ background: '#111' }}
-          />
+            onTouchStart={onPassengerTouchStart}
+            onTouchMove={onPassengerTouchMove}
+            onTouchEnd={onPassengerTouchEnd}
+          >
+            <video
+              ref={mobilePassengerVideoRef}
+              key={mobilePassengerVideos[mobilePassengerIndex].video}
+              src={mobilePassengerVideos[mobilePassengerIndex].video}
+              autoPlay
+              muted
+              loop
+              className="w-full rounded-lg"
+              style={{ background: '#111' }}
+            />
+          </div>
           <div className="text-lg text-center mb-3">{mobilePassengerVideos[mobilePassengerIndex].name}</div>
           {/* Dots */}
           <div className="flex flex-row items-center justify-center gap-2 mb-4">
@@ -232,16 +285,24 @@ export default function VehicleShowcase({ blueSectionRef }) {
         <div className="w-full flex flex-col items-center mb-10">
           <div className="text-xl font-semibold text-[#00aaff] mb-1">Commercial vehicles</div>
           <div className="text-sm md:text-base text-center mb-4 font-normal">Advancing engineering<br/>for heavy-duty vehicles.</div>
-          <video
-            ref={mobileCommercialVideoRef}
-            key={mobileCommercialVideos[mobileCommercialIndex].video}
-            src={mobileCommercialVideos[mobileCommercialIndex].video}
-            autoPlay
-            muted
-            loop
+          <div
             className="w-full max-w-xs rounded-lg bg-black mb-2"
             style={{ background: '#111' }}
-          />
+            onTouchStart={onCommercialTouchStart}
+            onTouchMove={onCommercialTouchMove}
+            onTouchEnd={onCommercialTouchEnd}
+          >
+            <video
+              ref={mobileCommercialVideoRef}
+              key={mobileCommercialVideos[mobileCommercialIndex].video}
+              src={mobileCommercialVideos[mobileCommercialIndex].video}
+              autoPlay
+              muted
+              loop
+              className="w-full rounded-lg"
+              style={{ background: '#111' }}
+            />
+          </div>
           <div className="text-lg text-center mb-3">{mobileCommercialVideos[mobileCommercialIndex].name}</div>
           {/* Dots */}
           <div className="flex flex-row items-center justify-center gap-2 mb-4">
