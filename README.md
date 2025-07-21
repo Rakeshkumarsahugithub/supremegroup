@@ -71,7 +71,7 @@ A modern, responsive web application for Supreme Group, built with Next.js, Reac
 | Static Site Generation (SSG) | All pages are pre-built for instant delivery from the CDN.         |
 | Code Splitting               | Automatic via Next.js                                             |
 | Image Optimization           | Next.js `<Image />` for responsive, compressed images              |
-| Video Compression            | All videos compressed before adding to `/public/` (HandBrake/FFmpeg)|
+| Video Compression            |All videos need to be compressed using HandBrake or FFmpeg before being added to /public/ to ensure optimal performance.|
 | Video Lazy Loading           | All `<video>` tags use `loading="lazy"` for deferred loading      |
 | Font Optimization            | Google Fonts, only needed weights loaded                           |
 | Critical CSS                 | Tailwind purges unused CSS                                         |
@@ -90,5 +90,14 @@ A modern, responsive web application for Supreme Group, built with Next.js, Reac
 ---
 
 ## ♿ Accessibility
+| Feature Area         | Implementation Details                                                                |
+|----------------------|---------------------------------------------------------------------------------------|
+| **Semantic HTML**    | Uses proper HTML5 elements like `<header>`, `<main>`, `<footer>`, and headings for structure. |
+| **Keyboard Navigation**| All interactive elements (buttons, links) are fully accessible via keyboard.          |
+| **Forms**            | All form inputs have associated `<label>`s (using `sr-only` for clean design).        |
+| **Focus Management** | Visible focus states on all interactive elements.                                     |
+| **Color Contrast**   | Text and background colors are chosen to meet WCAG AA contrast standards.               |
+| **Links & Buttons**  | Clickable phone/email links use `tel:` and `mailto:`. All buttons have clear labels.     |
+| **Error Handling**   | The custom 404 page provides clear messaging and a "Go to Homepage" button for easy navigation. |
 
-- All forms have accessible `<label>` elements (using `
+---
