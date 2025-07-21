@@ -245,8 +245,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
           <div className="text-xl font-semibold text-[#00aaff] mb-1">Passenger vehicles</div>
           <div className="text-sm md:text-base text-center mb-4 font-normal">Revving up innovation<br/>from interior to exterior.</div>
           <div
-            className="w-full max-w-xs rounded-lg bg-black mb-2"
-            style={{ background: '#111' }}
+            className="w-full max-w-xs rounded-lg mb-2"
             onTouchStart={onPassengerTouchStart}
             onTouchMove={onPassengerTouchMove}
             onTouchEnd={onPassengerTouchEnd}
@@ -259,7 +258,6 @@ export default function VehicleShowcase({ blueSectionRef }) {
               muted
               loop
               className="w-full rounded-lg"
-              style={{ background: '#111' }}
             />
           </div>
           <div className="text-lg text-center mb-3">{mobilePassengerVideos[mobilePassengerIndex].name}</div>
@@ -286,8 +284,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
           <div className="text-xl font-semibold text-[#00aaff] mb-1">Commercial vehicles</div>
           <div className="text-sm md:text-base text-center mb-4 font-normal">Advancing engineering<br/>for heavy-duty vehicles.</div>
           <div
-            className="w-full max-w-xs rounded-lg bg-black mb-2"
-            style={{ background: '#111' }}
+            className="w-full max-w-xs rounded-lg mb-2"
             onTouchStart={onCommercialTouchStart}
             onTouchMove={onCommercialTouchMove}
             onTouchEnd={onCommercialTouchEnd}
@@ -300,7 +297,6 @@ export default function VehicleShowcase({ blueSectionRef }) {
               muted
               loop
               className="w-full rounded-lg"
-              style={{ background: '#111' }}
             />
           </div>
           <div className="text-lg text-center mb-3">{mobileCommercialVideos[mobileCommercialIndex].name}</div>
