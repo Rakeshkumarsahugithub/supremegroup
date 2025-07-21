@@ -258,6 +258,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
               muted
               loop
               className="w-full rounded-lg"
+              loading="lazy"
             />
           </div>
           <div className="text-lg text-center mb-3">{mobilePassengerVideos[mobilePassengerIndex].name}</div>
@@ -297,6 +298,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
               muted
               loop
               className="w-full rounded-lg"
+              loading="lazy"
             />
           </div>
           <div className="text-lg text-center mb-3">{mobileCommercialVideos[mobileCommercialIndex].name}</div>
@@ -390,6 +392,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
                   onEnded={handleEnded}
                   animate={{ opacity: videoLoading ? 0 : 1 }}
                   transition={{ duration: 0.4 }}
+                  loading="lazy"
                 />
               </motion.div>
             ) : (
@@ -411,6 +414,7 @@ export default function VehicleShowcase({ blueSectionRef }) {
               className="max-h-56 max-w-full rounded-lg"
               onTimeUpdate={handleTimeUpdate}
               onEnded={handleEnded}
+              loading="lazy"
             />
               </motion.div>
             )}
