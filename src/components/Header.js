@@ -34,9 +34,11 @@ export default function Header() {
         <Image
           src="/Supreme Group assets/supreme logo.png"
           alt="Supreme Group Logo"
-          width={150}
-          height={150}
+          width={180}
+          height={60}
           className="h-auto w-auto"
+          priority
+          sizes="(max-width: 768px) 140px, 180px"
         />
       </div>
     </header>
