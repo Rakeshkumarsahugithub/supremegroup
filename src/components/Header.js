@@ -38,7 +38,7 @@ export default function Header() {
           height={60}
           className="h-auto w-auto"
           priority
-          sizes="(max-width: 768px) 140px, 180px"
+          sizes="180px"
         />
       </div>
     </header>
